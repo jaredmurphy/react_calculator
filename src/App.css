@@ -7,9 +7,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-/*  background-image: url('https://cdn.spacetelescope.org/archives/images/large/heic1501a.jpg');
- */
-  background-color: orange;
+  background-image: url('https://cdn.spacetelescope.org/archives/images/large/heic1501a.jpg');
   background-size: 100%;
 }
 
@@ -45,7 +43,6 @@ h1 {
   margin: 0;
   padding-right: 10px;
   padding-bottom: 20px;
-  font-size: 35px;
 }
 
 .number_pad {
@@ -66,7 +63,7 @@ h1 {
   cursor: pointer;
 }
 
-.tile:active h5 {
+tile:active h5 {
   color: black;
 }
 
@@ -77,22 +74,3 @@ h5 {
   margin: 30px auto;
 }
 
-/* Animations */ 
-
-.example-enter {
-    opacity: 0.01;
-}
-
-.example-enter.example-enter-active {
-    opacity: 1;
-      transition: opacity 500ms ease-in;
-}
-
-.example-leave {
-    opacity: 1;
-}
-
-.example-leave.example-leave-active {
-    opacity: 0.01;
-      transition: opacity 300ms ease-in;
-}

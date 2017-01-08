@@ -5,10 +5,10 @@ import data from '../data';
 class NumberPad extends Component{
 
  renderTiles() {
-   return data.map((tile,i) => {
+   return data.map(tile => {
      return (
       <Tile 
-        key={i} 
+        key={tile.id} 
         size={tile.size ? tile.size : ''} 
         symbol={tile.symbol} 
         handleClick={this.props.handleClick}
