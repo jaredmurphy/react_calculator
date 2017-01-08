@@ -4,15 +4,31 @@ import Display from './Display';
 import NumberPad from './NumberPad';
 
 class Calculator extends Component {
-  // this component may need to have some state
-  // think about what you need to keep track of
-  // where would you need to pass information to?
+  constructor() {
+    super();
+    this.state = {
+      currentDisplay: '0',
+      currentLog: [],
+      total: 0
+
+    }
+  }
+
+
+
+  handleClick(value){
+    if (value == Number(value)) {
+      this.setState({ currentDisplay: value });
+    }
+
+    this.addToLog(value);
+  }
 
   render() {
     return (
       <div className="calculator">
-        <Display />
-        <NumberPad />
+        <Display currentDisplay={this.state.currentDisplay}/>
+        <NumberPad handleClick={this.handleClick.bind(this)} />
       </div>
     );
   }

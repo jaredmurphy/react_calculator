@@ -2,11 +2,11 @@ import React from 'react';
 
 const Tile = (props) => {
   const double = props.size === 2 ? '200px' : ''; 
-  console.log(props.size, double)
   return (
     <div 
       style={{width: double}} 
       className='tile' 
+      onClick={() => {props.handleClick(props.symbol)}}
     >
       <h5>
         { props.symbol }

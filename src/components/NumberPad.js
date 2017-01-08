@@ -6,9 +6,13 @@ class NumberPad extends Component{
 
  renderTiles() {
    return data.map((tile,i) => {
-     console.log(typeof(tile.symbol))
      return (
-      <Tile key={i} size={tile.size ? tile.size : ''} symbol={tile.symbol} />
+      <Tile 
+        key={i} 
+        size={tile.size ? tile.size : ''} 
+        symbol={tile.symbol} 
+        handleClick={this.props.handleClick}
+      />
      )
    });
  }
