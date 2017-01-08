@@ -14,6 +14,16 @@ class Calculator extends Component {
     }
   }
 
+  addToLog(value){
+    const logCopy = this.state.currentLog;
+    logCopy.push(value);
+    this.setState({ currentLog: logCopy });
+    console.log('update log', this.state.currentLog);
+  }
+
+  resetLog(value){
+    this.setState({ currentLog: [value] });
+  }
 
 
   handleClick(value){
