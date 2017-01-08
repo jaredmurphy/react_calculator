@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body {
+  box-sizing: border;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.calculator {
+  max-width: 400px; 
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 15px;
+}
+
+.display {
+  height: 150px;
+  background-color: black;
+  color: #fff;
+  width: 400px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.display_text {
+  margin: 0;
+  padding-right: 10px;
+  padding-bottom: 20px;
+  font-size: 35px;
+}
+
+.number_pad {
+  max-width: 400px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tile {
+  width: 100px;
+  height: 100px;
+  outline: 1px solid black;
+  margin: auto;
+}
+
+h5 {
+  font-size: 25px;
+  font-family: Roboto;
+}
+
+
+.orange {
+  background-color: orange;
+}
+
+.orange h5 {
+  color: #fff;
+}
