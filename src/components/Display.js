@@ -6,7 +6,7 @@ const Display = () => {
   // does this need to be a class component?
   return (
     <div className="display">
-      <h5 className="display_text">
+      <h5 key="h1" className="display_text">
         3.14        
       </h5>
     </div>

@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactCssTransitionGroup from 'react-addons-css-transition-group';
 
 const Tile = (props) => {
   const double = props.size === 2 ? '200px' : ''; 
@@ -7,7 +6,7 @@ const Tile = (props) => {
   return (
     <div 
       style={{width: double}} 
-      className={`tile ${props.kind}`} 
+      className='tile' 
     >
       <h5>
         { props.symbol }

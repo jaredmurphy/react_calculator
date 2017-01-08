@@ -1,6 +1,6 @@
 import React, { Component }from 'react';
 import Tile from './Tile';
-import data from './data';
+import data from '../data';
 
 class NumberPad extends Component{
 
@@ -8,7 +8,7 @@ class NumberPad extends Component{
    return data.map((tile,i) => {
      console.log(typeof(tile.symbol))
      return (
-      <Tile key={i} kind={tile.kind} size={tile.size ? tile.size : ''} symbol={tile.symbol} />
+      <Tile key={i} size={tile.size ? tile.size : ''} symbol={tile.symbol} />
      )
    });
  }

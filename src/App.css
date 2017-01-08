@@ -1,22 +1,37 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Orbitron');
+
 
 body {
   box-sizing: border;
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-image: url('https://cdn.spacetelescope.org/archives/images/large/heic1501a.jpg');
+  background-size: 100%;
+}
+
+h1 {
+  position: fixed;
+  left: 10px;
+  font-size: 60px;
+  font-family: Orbitron;
+  margin-top: -25px;
+  color: white;
+  -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: black;
 }
 
 .calculator {
   max-width: 400px; 
   margin: 0 auto;
   text-align: center;
-  margin-top: 15px;
+  margin-top: 60px;
 }
 
 .display {
-  height: 150px;
-  background-color: black;
+  height: 50px;
   color: #fff;
   width: 400px;
   display: flex;
@@ -35,6 +50,7 @@ body {
   max-width: 400px;
   display: flex;
   flex-wrap: wrap;
+  outline: 2px solid black;
 }
 
 .tile {
@@ -44,16 +60,37 @@ body {
   margin: auto;
 }
 
+.tile:hover {
+  cursor: pointer;
+}
+
+.tile:active h5 {
+  color: black;
+}
+
 h5 {
-  font-size: 25px;
+  font-size: 39px;
   font-family: Roboto;
+  color: white;
+  margin: 30px auto;
 }
 
+/* Animations */ 
 
-.orange {
-  background-color: orange;
+.example-enter {
+    opacity: 0.01;
 }
 
-.orange h5 {
-  color: #fff;
+.example-enter.example-enter-active {
+    opacity: 1;
+      transition: opacity 500ms ease-in;
+}
+
+.example-leave {
+    opacity: 1;
+}
+
+.example-leave.example-leave-active {
+    opacity: 0.01;
+      transition: opacity 300ms ease-in;
 }
