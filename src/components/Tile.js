@@ -6,7 +6,7 @@ const Tile = (props) => {
     <div 
       style={{width: double}} 
       className='tile' 
-      onClick={() => {props.handleClick(props.symbol)}}
+      onClick={() => {props.handleClick(props.symbol, props.number)}}
     >
       <h5>
         { props.symbol }

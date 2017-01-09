@@ -63,8 +63,8 @@ h1 {
   cursor: pointer;
 }
 
-tile:active h5 {
-  color: black;
+.tile:active {
+  box-shadow: 0 0 200px rgba(0,0,0,0.9) inset;
 }
 
 h5 {

@@ -72,8 +72,9 @@ class Calculator extends Component {
     this.setState({ currentNumber: result });
   }
 
-  handleClick(value){
-    if (value == Number(value) || value === "."){
+  handleClick(value, type){
+    console.log(type);
+    if (type || value === "."){
       this.handleNumber(value);
     } else if (value === 'C'){
       this.reset('0');

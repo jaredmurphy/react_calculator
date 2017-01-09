@@ -11,6 +11,7 @@ class NumberPad extends Component{
         key={tile.id} 
         size={tile.size ? tile.size : ''} 
         symbol={tile.symbol} 
+        number={tile.number}
         handleClick={this.props.handleClick}
       />
      )
