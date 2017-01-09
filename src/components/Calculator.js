@@ -9,7 +9,7 @@ class Calculator extends Component {
     this.state = {
       currentOperator: null,
       currentNumber: '0',
-      total: null 
+      total: null
     }
   }
 
@@ -18,7 +18,7 @@ class Calculator extends Component {
     const newCurrent = currentNumber === '0' ? value : currentNumber + value;
     this.setState({ currentNumber: newCurrent });
   }
-  
+
   handleOperator(value){
     this.combineTotalAndCurrent();
     this.setState({currentOperator: value});
@@ -31,10 +31,10 @@ class Calculator extends Component {
   }
 
   reset(value){
-    this.setState({ 
+    this.setState({
       currentOperator: null,
       currentNumber: value,
-      total: null 
+      total: null
     });
   }
 
@@ -61,12 +61,12 @@ class Calculator extends Component {
       case "%":
         result = percentage(total);
         break;
-      default: 
+      default:
         this.reset('0');
         return;
     }
     this.reset(result.toString());
-  }      
+  }
 
   submitAnswer(result){
     this.setState({ currentNumber: result });
@@ -81,7 +81,7 @@ class Calculator extends Component {
       this.calculate();
     } else {
       this.handleOperator(value);
-    } 
+    }
   }
 
   render() {
