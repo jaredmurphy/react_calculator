@@ -2,7 +2,6 @@ export default [
   { 
     id: 0, 
     symbol: 'C',
-    number: true 
   },
   {
     id: 1,

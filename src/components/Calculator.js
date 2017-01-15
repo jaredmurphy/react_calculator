@@ -20,8 +20,8 @@ class Calculator extends Component {
   }
 
   handleOperator(value){
-    this.combineTotalAndCurrent();
     this.setState({currentOperator: value});
+    this.combineTotalAndCurrent();
   }
 
   combineTotalAndCurrent(){
@@ -73,7 +73,6 @@ class Calculator extends Component {
   }
 
   handleClick(value, type){
-    console.log(type);
     if (type || value === "."){
       this.handleNumber(value);
     } else if (value === 'C'){
