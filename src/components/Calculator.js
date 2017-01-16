@@ -2,79 +2,82 @@ import React, { Component } from 'react';
 import Display from './Display';
 import NumberPad from './NumberPad';
 import calcFunctions from '../calcFunctions';
+const { add, subtract, multiply, divide, percentage } = calcFunctions; 
 
 class Calculator extends Component {
   constructor() {
     super();
     this.state = {
       currentOperator: null,
-      currentNumber: '0',
-      total: null
+      currentDisplay: '0',
+      currentNumber: null,
+      total: 0
     }
   }
 
-  handleNumber(value){
-    const { currentNumber } = this.state;
-    const newCurrent = currentNumber === '0' ? value : currentNumber + value;
-    this.setState({ currentNumber: newCurrent });
+  updateOperator(value){
+    this.setState({ currentOperator: value });
+  }
+  
+  updateTotal(value){
+    this.setState({ total: value });
   }
 
-  handleOperator(value){
-    this.setState({currentOperator: value});
-    this.combineTotalAndCurrent();
+  updateCurrentNumber(value){
+    this.setState({ currentNumber: value });
   }
 
-  combineTotalAndCurrent(){
-    const { total, currentNumber } = this.state;
-    const newTotal = Number(total) + Number(currentNumber);
-    this.setState({ total: newTotal, currentNumber: ''});
+  updateDisplay(value){
+    this.setState({ currentDisplay: value });
   }
 
-  reset(value){
-    this.setState({
-      currentOperator: null,
-      currentNumber: value,
-      total: null
-    });
+  reset(result){
+    this.updateTotal(result);
+    this.updateDisplay(result);
+    this.updateCurrentNumber(null);
+    this.updateOperator(null);
+  }
+
+  reversePositivity(){
+    const { currentNumber, total } = this.state;
+    const reversedCurrent = Number(currentNumber) * -1;
+    this.updateCurrentNumber(reversedCurrent);
+    this.updateDisplay(reversedCurrent);
   }
 
   calculate(){
-    let { total, currentNumber, currentOperator } = this.state;
-    total = Number(total);
-    currentNumber = Number(currentNumber);
-    const { add, subtract, multiply, divide, percentage } = calcFunctions;
-    let result;
+    const { currentDisplay, total, currentNumber, currentOperator } = this.state;
+    const totalToInt = Number(total);
+    const currentToInt = Number(currentNumber);
 
+    let result;
     switch (currentOperator) {
       case "+":
-        result = add(total, currentNumber);
+        result = add(totalToInt, currentToInt);
         break;
       case "-":
-        result = subtract(total, currentNumber);
+        result = subtract(totalToInt, currentToInt);
         break;
       case "x":
-        result = multiply(total, currentNumber);
+        result = multiply(totalToInt, currentToInt);
         break;
       case "/":
-        result = divide(total, currentNumber);
+        result = divide(totalToInt, currentToInt);
         break;
       case "%":
-        result = percentage(total);
+        result = percentage(currentToInt || totalToInt);
         break;
       default:
-        this.reset('0');
-        return;
+        result = total;
     }
-    this.reset(result.toString());
-  }
-
-  submitAnswer(result){
-    this.setState({ currentNumber: result });
+    this.reset(result);
   }
 
   handleClick(value){
     if ((/^\d$/.test(value)) || value === "."){
       this.handleNumber(value);
+    } else if (value === "+/-") {
+      this.reversePositivity();
     } else if (value === 'C'){
       this.reset('0');
     } else if (value === '=') {
@@ -84,10 +87,31 @@ class Calculator extends Component {
     }
   }
 
+  handleNumber(value){
+    const { currentDisplay, currentOperator } = this.state;
+    const newCurrent = currentDisplay === '0' || currentOperator ? value : currentDisplay + value;
+    this.updateDisplay(newCurrent);
+    this.updateCurrentNumber(newCurrent);
+  }
+
+  handleOperator(value){
+    const { currentOperator, currentNumber, currentDisplay, total } = this.state;
+    if (currentOperator) {
+      this.calculate();
+      this.updateOperator(value);
+    } else {
+      this.updateOperator(value);
+      this.updateDisplay(value);
+      this.updateTotal(Number(currentNumber) + Number(total));
+      this.updateCurrentNumber(null);
+    }
+  }
+
+
   render() {
     return (
       <div className="calculator">
-        <Display currentDisplay={this.state.currentNumber}/>
+        <Display currentDisplay={this.state.currentDisplay}/>
         <NumberPad handleClick={this.handleClick.bind(this)} />
       </div>
     );

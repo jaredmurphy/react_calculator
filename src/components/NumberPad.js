@@ -3,7 +3,6 @@ import Tile from './Tile';
 import data from '../data';
 
 class NumberPad extends Component{
-
  renderTiles() {
    return data.map(tile => {
      return (
